@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Related Whitepapers - Polaritronics, Inc.</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 1000px; margin: 0 auto; padding: 40px; background-color: #f4f7f6; }
+        header { background-color: #1a2a6c; color: white; padding: 40px; border-radius: 8px; margin-bottom: 40px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        h1 { margin: 0; font-size: 2.5em; }
+        .subtitle { font-size: 1.2em; opacity: 0.9; margin-top: 10px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px; }
+        .card { background: white; padding: 25px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); transition: transform 0.2s, box-shadow 0.2s; border-top: 4px solid #1a2a6c; display: flex; flex-direction: column; }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.1); }
+        .card h2 { margin-top: 0; font-size: 1.2em; color: #1a2a6c; min-height: 3em; }
+        .card p { font-size: 0.85em; color: #666; height: 120px; overflow: hidden; position: relative; margin-bottom: 20px; }
+        .card p::after { content: ""; position: absolute; bottom: 0; right: 0; width: 100%; height: 40px; background: linear-gradient(transparent, white); }
+        .btn { margin-top: auto; display: inline-block; background: #1a2a6c; color: white; padding: 8px 16px; border-radius: 4px; text-decoration: none; font-weight: bold; font-size: 0.9em; text-align: center; }
+        .btn:hover { background: #2a3a7c; }
+        footer { margin-top: 60px; text-align: center; color: #888; font-size: 0.9em; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>AI-Related Whitepapers</h1>
+        <div class="subtitle">Research and Development by Michael Rapoport, Polaritronics, Inc.</div>
+    </header>
+
+    <div class="grid">
+        
+        <div class="card">
+            <h2>Adaptive AI for Dynamic Acoustic Anomaly Thresholding</h2>
+            <p>
+
+Acoustic Emission (AE) analysis remains a cornerstone of non-destructive testing and predictive maintenance; however, traditional static thresholding techniques exhibit significant limitations when applied to machinery operating under variable kinematic and kinetic loads. In non-stationary environments, the operational noise floor often exceeds fixed safety thresholds during high-load states, yielding excessive false positives, or masks subtle incipient failures during low-load states (false negatives). This paper proposes a dynamic, multi-modal framework: the Adaptive Dynamic Acoustic Thresholding (ADAT) system. By fusing high-frequency acoustic data with real-time operational telemetry (rotational velocity and torque load), we construct a conditional probability model that dynamically adjusts spectral spike detection thresholds. We demonstrate that tribological acoustic energy generation is a deterministic function of mechanical energy input, allowing for the subtraction of "operational noise" from the total acoustic signal. Simulation results indicate a 94.2% reduction in false positive rates compared to ISO-standard static thresholding while maintaining superior sensitivity to bearing faults.
+
+
+1.</p>
+            <a href="adaptive-ai-for-dynamic-acoustic-anomaly-threshold.html" class="btn">Read Whitepaper</a>
+        </div>
+        
+        <div class="card">
+            <h2>Adaptive Multi-Modal Wave Control for Complex Environments</h2>
+            <p>
+
+The precise manipulation of complex physical environments—ranging from plasma confinement to micro-fluidic synthesis—requires actuator authorities that transcend single-modality wave propagation. Conventional control strategies typically rely on mono-modal actuation (e.g., acoustic levitation or electromagnetic containment), limiting efficacy in highly non-linear, stochastic regimes. This paper presents an Adaptive Multi-Modal Wave Control (AMWC) system that simultaneously manages acoustic, electromagnetic, and thermal actuators through a novel Physics-Informed Machine Learning (PIML) architecture. By integrating a Volterra series-based non-linear expansion within a Transformer attention mechanism, we introduce "Physics-Disentangled Attention." This mechanism separates linear superposition effects modeled by Green’s functions from complex non-linear couplings learned via data-driven inductive biases. Simulation results demonstrate a 43% reduction in convergence time and a 28% improvement in energy efficiency compared to standard Model Predictive Control (MPC) baselines, validating the necessity of multi-physics disentanglement in high-dimensional control spaces.
+</p>
+            <a href="adaptive-multi-modal-wave-control-for-complex-envi.html" class="btn">Read Whitepaper</a>
+        </div>
+        
+        <div class="card">
+            <h2>Adaptive Sensitivity-Driven Wave Optimization</h2>
+            <p>
+
+The optimization of complex wave propagation phenomena—ranging from acoustic focusing to electromagnetic beamforming—remains a formidable challenge in computational physics and control theory. High-dimensional control spaces and non-linear physical interactions often render traditional gradient-free optimization computationally prohibitive. This paper presents Adaptive Sensitivity-Driven Wave Optimization (ASDWO), a novel framework integrating Differentiable Physics, Variational Autoencoders (VAEs), and Model Reference Adaptive Control (MRAC). By mapping high-dimensional wave patterns onto a low-dimensional differentiable latent manifold, and utilizing the adjoint state method to propagate gradients through the physical simulation layer, the system achieves real-time sensitivity analysis. We demonstrate that this sensitivity information can be leveraged to drive adaptive control laws that update both the control parameters and the underlying physics model in response to environmental uncertainty. Simulation results indicate a 40% reduction in convergence time compared to standard deep reinforcement learning baselines, alongside robust performance in dynamic scattering media.
+</p>
+            <a href="adaptive-sensitivity-driven-wave-optimization.html" class="btn">Read Whitepaper</a>
+        </div>
+        
+        <div class="card">
+            <h2>Adversarial Physics-Informed Neural Network (A-PINN)</h2>
+            <p>
+
+Atmospheric modeling has traditionally relied on Numerical Weather Prediction (NWP) systems based on discretized partial differential equations (PDEs). While physically rigorous, these models suffer from high computational costs and inherent approximations in sub-grid parameterizations. Conversely, data-driven deep learning approaches offer computational efficiency but frequently violate fundamental conservation laws, leading to physically inconsistent predictions. This paper introduces the Adversarial Physics-Informed Neural Network (A-PINN), a hybrid architecture designed to bridge the "Sim-to-Real" gap in atmospheric science. By integrating Navier-Stokes-based residual regularization within a Generative Adversarial Network (GAN) framework, A-PINN enforces thermodynamic consistency while employing adversarial domain adaptation to capture unmodeled empirical complexities. We propose a novel Dynamic Loss Modulation mechanism that adaptively weights physical constraints against adversarial feedback, allowing the model to correct idealized governing equations with observational reality. Simulation results demonstrate that A-PINN reduces Root Mean Square Error (RMSE) by 18% compared to standard PINNs while maintaining mass and momentum conservation within $10^{-5}$ tolerance levels.
+</p>
+            <a href="adversarial-physics-informed-neural-network--a-pin.html" class="btn">Read Whitepaper</a>
+        </div>
+        
+        <div class="card">
+            <h2>AI-Controlled Phased-Array Beamforming System</h2>
+            <p>
+
+The performance of high-frequency phased-array systems, particularly in millimeter-wave and terahertz regimes, is fundamentally constrained by the stochastic nature of thermal fluctuations and their consequent impact on electromagnetic (EM) parameters. Traditional thermal management relies on reactive cooling hardware, treating thermal drift as an exogenous disturbance. This paper presents a novel control paradigm: an AI-Controlled Phased-Array Beamforming System that treats thermo-electromagnetic coupling as a deterministic, explicitly modeled process. By integrating Physics-Informed Neural Networks (PINNs) with a Graph-Temporal Convolutional Network (G-TCN), we reconstruct the spatiotemporal evolution of heat across the array lattice. This predictive model feeds an Adaptive Receding Horizon Control (RHC) architecture, allowing the system to preemptively adjust complex weights to compensate for future material state changes. Simulation results demonstrate a 42% reduction in beam pointing error and a 3.5 dB improvement in Side-Lobe Level (SLL) suppression under high-dynamic thermal loads compared to conventional feedback mechanisms.
+</p>
+            <a href="ai-controlled-phased-array-beamforming-system.html" class="btn">Read Whitepaper</a>
+        </div>
+        
+        <div class="card">
+            <h2>Analog Crossbar Phase Controller</h2>
+            <p>
+
+Active Flow Control (AFC) systems in industrial fluid dynamics require sub-microsecond feedback loops to stabilize turbulent boundary layers effectively. Traditional Digital Signal Processing (DSP) architectures face fundamental latency limitations due to Analog-to-Digital Conversion (ADC) overhead and clock-cycle constraints. This paper presents the Analog Crossbar Phase Controller (ACPC), a non-von Neumann architecture utilizing memristive crossbar arrays to perform instantaneous phase-shifting via analog Vector-Matrix Multiplication (VMM). By mapping rotation matrices onto a physical conductance matrix governed by Kirchhoff’s and Ohm’s laws, the ACPC achieves signal processing in the analog domain with negligible latency. We demonstrate through SPICE simulations that the proposed differential pair encoding scheme effectively negates the limitations of unipolar conductance, achieving a phase-shift precision of 0.5 degrees with a propagation delay of less than 2 nanoseconds, significantly outperforming conventional FPGA-based solutions.
+</p>
+            <a href="analog-crossbar-phase-controller.html" class="btn">Read Whitepaper</a>
+        </div>
+        
+        <div class="card">
+            <h2>Analog Transformation Matrix Mapping Software</h2>
+            <p>
+Computational Fluid Dynamics (CFD) simulations are traditionally bottlenecked by the Von Neumann architecture, specifically the data movement required for solving massive systems of linear equations derived from the Navier-Stokes equations. Analog in-memory computing, utilizing memristive crossbar arrays, offers a theoretical $O(1)$ time complexity for Matrix-Vector Multiplication (MVM) via Kirchhoff’s laws. However, the intrinsic stochasticity, limited precision, and real-valued nature of memristors have historically precluded their use in high-precision, complex-valued CFD solvers. This paper presents an Analog Transformation Matrix Mapping (ATMM) software framework. This tool automates the translation of complex-valued discretized fluid models into physical conductance states. By employing a bit-slicing architecture to aggregate low-precision memristors into high-precision logical units and utilizing a sensitivity-aware mapping algorithm to mitigate device-to-device variability, we demonstrate a feasible pathway for analog CFD. Simulation results indicate a 3-order-of-magnitude improvement in energy efficiency compared to CMOS-based FP64 solvers, while maintaining numerical convergence within acceptable error margins for steady-state laminar flow profiles.</p>
+            <a href="analog-transformation-matrix-mapping-software.html" class="btn">Read Whitepaper</a>
+        </div>
+        
+        <div class="card">
+            <h2>Bio-Adaptive Nanoporous Energy Fabric</h2>
+            <p>
+
+The proliferation of wearable bio-electronics is currently encumbered by the specific energy density and rigidity of traditional electrochemical energy storage systems. This paper presents the design and characterization of a Bio-Adaptive Nanoporous Energy Fabric (B-ANEF), a flexible membrane capable of harvesting energy from physiological fluid transport (perspiration) via electrokinetic phenomena. Unlike static hydrovoltaic systems, the B-ANEF utilizes surface-grafted, stimuli-responsive polyelectrolyte brushes within nanopores to dynamically modulate channel geometry. By coupling the conformational changes of pH-responsive polymers with the variable ionic strength of human sweat, the system autonomously optimizes the ratio between pore radius and Debye screening length ($\lambda_D$). Theoretical modeling and finite element simulations demonstrate that this adaptive gating mechanism maintains peak streaming potential conversion efficiency across a broad range of physiological conditions, achieving a simulated power density of $12.4 \: \mu\mathrm{W}\cdot\mathrm{cm}^{-2}$, a 40% improvement over static nanoporous control groups.
+</p>
+            <a href="bio-adaptive-nanoporous-energy-fabric.html" class="btn">Read Whitepaper</a>
+        </div>
+        
+        <div class="card">
+            <h2>Digital Twin Policy Gradient Trainer</h2>
+            <p>
+
+The deployment of Deep Reinforcement Learning (DRL) in physical supply chain management is severely hindered by the "reality gap"—the distributional shift between training simulations and stochastic real-world dynamics. This paper introduces the Digital Twin Policy Gradient Trainer (DT-PGT), a novel framework designed to train robust control policies for supply chain assets under extreme disruption scenarios. By integrating high-fidelity Digital Twins (DT) with Adaptive Domain Randomization (ADR), we minimize the Kullback-Leibler (KL) divergence between simulated and physical transition probabilities. Furthermore, to ensure operational safety during exploration, we formulate the optimization problem via Lagrangian duality, projecting policy gradients onto a feasible manifold derived from physical constraints. Our results demonstrate that DT-PGT achieves a 43% improvement in sim-to-real transfer efficiency compared to standard Proximal Policy Optimization (PPO) baselines while maintaining near-zero constraint violations in stochastic environments.
+</p>
+            <a href="digital-twin-policy-gradient-trainer.html" class="btn">Read Whitepaper</a>
+        </div>
+        
+        <div class="card">
+            <h2>Dual-Electrode Acoustic-Pressure Hybrid Sensor</h2>
+            <p>
+
+The structural integrity of industrial pipeline networks heavily relies on the real-time monitoring of internal pressure fluctuations and the early detection of structural defects via acoustic emission (AE). Conventional monitoring solutions typically employ separate sensor arrays for static pressure and dynamic acoustics, leading to increased system complexity and power consumption. This paper presents the design, theoretical modeling, and simulated characterization of a Dual-Electrode Acoustic-Pressure Triboelectric Nanogenerator (DAP-TENG). Utilizing a microstructured polytetrafluoroethylene (PTFE) diaphragm, the device converts mechanical stimuli into electrical signals via coupling contact electrification and electrostatic induction. We demonstrate that the superposition of low-frequency pressure surges (0.1–10 Hz) and high-frequency acoustic emissions (1–20 kHz) can be effectively decoupled in the frequency domain. The sensor exhibits a simulated pressure sensitivity of 45 mV/kPa and an acoustic detection threshold of 35 dB SPL, offering a self-powered, robust solution for Industrial Internet of Things (IIoT) applications.
+</p>
+            <a href="dual-electrode-acoustic-pressure-hybrid-sensor.html" class="btn">Read Whitepaper</a>
+        </div>
+        
+        <div class="card">
+            <h2>Dual-Purpose Thermal-Logic Microfluidic Crossbar</h2>
+            <p>
+The scaling of neuromorphic computing architectures is currently impeded by the thermal dissipation limits of high-density memristive crossbar arrays, particularly within three-dimensional (3D) integrated circuits. This paper proposes and theoretically validates a Dual-Purpose Thermal-Logic Microfluidic Crossbar (DPTL-MC) architecture. In this design, microfluidic channels containing high-thermal-capacity ionic liquids serve a simultaneous dual function: active convective cooling and electrochemical gating of redox-based memristive elements. By coupling the Navier-Stokes equations for fluid dynamics with the drift-diffusion model of ion transport, we derive the operational limits imposed by electrokinetic streaming potentials. Finite element analysis (FEA) demonstrates that the DPTL-MC architecture can reduce peak junction temperatures by 35 K compared to passive cooling, while maintaining a logic switching margin above 85% relative to static operation, provided the hydraulic flow remains within a defined Reynolds number regime. This work establishes a theoretical framework for overcoming the thermal-logic trade-off in next-generation in-memory computing.</p>
+            <a href="dual-purpose-thermal-logic-microfluidic-crossbar.html" class="btn">Read Whitepaper</a>
+        </div>
+        
+        <div class="card">
+            <h2>Dynamic Control Signal Modulation Using Sensitivity Gradients</h2>
+            <p>
+
+The convergence of control theory and Scientific Machine Learning (SciML) offers unprecedented opportunities for managing highly non-linear dynamical systems. This paper introduces a novel control architecture: Gradient-Informed Dynamic Modulation (GIDM). Unlike traditional Model Predictive Control (MPC) or static gain scheduling, GIDM utilizes real-time sensitivity gradients derived from a differentiable physics engine to modulate the amplitude and phase of a preliminary control signal. By embedding Hard-Constraint Physics-Informed Neural Networks (HC-PINNs) within the control loop, we enforce boundary condition compliance structurally rather than statistically. Through the application of the continuous adjoint method, we compute the gradient of the performance functional with respect to control inputs at negligible computational cost. Simulation results on a chaotic Duffing-Holmes oscillator and a high-dimensional aeroelastic flutter model demonstrate that GIDM reduces settling time by 42% and energy consumption by 18% compared to standard adaptive PID and soft-constrained neural controllers, while strictly adhering to safety manifolds.
+</p>
+            <a href="dynamic-control-signal-modulation-using-sensitivit.html" class="btn">Read Whitepaper</a>
+        </div>
+        
+        <div class="card">
+            <h2>Dynamic Control System for Electro-Bioreactors</h2>
+            <p>
+Electro-fermentation (EF) represents a paradigm shift in bioprocessing, utilizing solid-state electrodes to act as electron donors or acceptors, thereby influencing microbial redox balance and metabolic flux. However, current EF systems lack robust feedback mechanisms to mitigate product inhibition and cytotoxicity in real-time. This paper proposes a novel Dynamic Control System for Electro-Bioreactors (DCS-EB) that integrates actuation and sensing on a single electrode interface via time-division multiplexing (TDM). We introduce a non-linear control strategy based on Barrier Lyapunov Functions (BLF) to rigorously constrain metabolic byproducts within non-toxic limits while maximizing product yield. Simulation results demonstrate that the DCS-EB architecture achieves a 24% increase in metabolite productivity compared to conventional potentiostatic control, while strictly maintaining system states within the safe biological envelope.</p>
+            <a href="dynamic-control-system-for-electro-bioreactors.html" class="btn">Read Whitepaper</a>
+        </div>
+        
+        <div class="card">
+            <h2>Dynamic Cross-Modal Calibration via Acoustic-Muon Feedback</h2>
+            <p>
+
+The integration of cosmic ray muon tomography (CRMT) and acoustic tomography offers a compelling modality for non-invasive monitoring of industrial thermodynamics, specifically within high-pressure boiler environments. However, the efficacy of this fusion is frequently compromised by sensor misalignment, thermal drift, and local variations in the speed of sound, which decouple the spatial coordinate systems of the two sensing modalities. This paper presents a novel calibration framework: Dynamic Cross-Modal Calibration via Acoustic-Muon Feedback (AMF). By injecting a low-amplitude, wide-band acoustic "chirp" into the fluid medium, we induce controlled, microscopic density fluctuations. We demonstrate that, despite the low flux of cosmic muons, the faint signature of this acoustic modulation can be recovered from the muon scattering and attenuation data via temporal integration and phase-locked cross-correlation. This process utilizes the acoustic signal as a volumetric fiducial marker, enabling the algorithmic self-alignment of the tomographic models. Simulation results confirm that this technique can reduce spatial registration errors to sub-millimeter scales, effectively neutralizing thermal drift and ensuring high-fidelity sensor fusion.
+</p>
+            <a href="dynamic-cross-modal-calibration-via-acoustic-muon-.html" class="btn">Read Whitepaper</a>
+        </div>
+        
+        <div class="card">
+            <h2>Dynamic Electron Flow Modulator</h2>
+            <p>
+
+The integration of biotic components with solid-state electrodes is pivotal for the advancement of bio-photovoltaics and biosensing. However, current interfaces suffer from static electron transfer (ET) kinetics, lacking the responsive adaptability characteristic of native biological systems. This paper presents the design and characterization of a Dynamic Electron Flow Modulator (DEFM), a genetically engineered transmembrane conduit that introduces allosteric control to the bio-anode interface. By inserting a photoswitchable LOV2 domain into a decaheme cytochrome scaffold and employing site-specific cysteine tethering, we demonstrate the ability to reversible modulate inter-heme distances. This modulation exploits the exponential distance dependence of electron tunneling, effectively gating current flow in response to photonic stimuli. Simulated results indicate a tunable ON/OFF ratio exceeding two orders of magnitude, validating the integration of protein nanomechanics with Marcus-type electron transfer theory.
+</p>
+            <a href="dynamic-electron-flow-modulator.html" class="btn">Read Whitepaper</a>
+        </div>
+        
+        <div class="card">
+            <h2>Frequency-Adaptive Resonant TENG Clamp</h2>
+            <p>
+The proliferation of wireless sensor networks in Industrial Internet of Things (IIoT) infrastructure necessitates sustainable, autonomous power solutions. While Triboelectric Nanogenerators (TENGs) utilize ambient mechanical energy effectively, conventional fixed-frequency designs suffer from severe efficiency attenuation when the excitation frequency deviates from the harvester’s natural resonant frequency. This paper introduces the Frequency-Adaptive Resonant (FAR) TENG Clamp, a modular energy harvesting architecture designed for high-pressure industrial piping. By integrating a mechanically tunable mass-spring system, the device achieves impedance matching with the stochastic vibration spectra of fluid-conveying pipes. Theoretical analysis and Finite Element Method (FEM) simulations demonstrate that the FAR-TENG can expand the effective bandwidth by 400% compared to static counterparts. Simulated results indicate a peak power density of 5.2 W/m² under resonant conditions, validating the system as a viable power source for condition-monitoring sensors in marine and drilling environments.</p>
+            <a href="frequency-adaptive-resonant-teng-clamp.html" class="btn">Read Whitepaper</a>
+        </div>
+        
+        <div class="card">
+            <h2>Graphene Sigmoid Dopant Deposition System</h2>
+            <p>Abstract not provided in source.</p>
+            <a href="graphene-sigmoid-dopant-deposition-system.html" class="btn">Read Whitepaper</a>
+        </div>
+        
+        <div class="card">
+            <h2>Hierarchical Fractal Geometry for Phased Arrays</h2>
+            <p>
+
+Modern electromagnetic transduction systems face a fundamental dichotomy: the requirement for high-gain, narrow-beam energy projection necessitates a large aperture, while wide-area surveillance and acquisition require wide-beam capabilities typically associated with small apertures. This paper proposes a novel physical layout and excitation scheme utilizing Hierarchical Fractal Geometry (HFG) to reconcile these opposing constraints within a single static hardware footprint. By arranging transducer elements according to a recursive Iterated Function System (IFS), specifically a modified Sierpinski distribution, we demonstrate the ability to electronically modulate the effective aperture size ($D_{eff}$). This enables simultaneous or rapid-switching operations between wide-area coverage (Tier-1 hierarchy) and high-focus projection (Tier-N hierarchy). Theoretical derivation and numerical simulation confirm that this topology maintains Side Lobe Levels (SLL) below -22 dB across a multi-octave bandwidth, leveraging the self-similarity of the array to mitigate grating lobes inherent in sparse arrays.
+</p>
+            <a href="hierarchical-fractal-geometry-for-phased-arrays.html" class="btn">Read Whitepaper</a>
+        </div>
+        
+        <div class="card">
+            <h2>High-Fidelity Predictive Model using Adversarial Transfer Learning</h2>
+            <p>
+
+The stochastic nature of Laser Powder Bed Fusion (LPBF) additive manufacturing creates a significant discrepancy between idealized Computational Fluid Dynamics (CFD) simulations and in-situ sensor observations. This paper introduces a novel predictive framework, the Anisotropic Graph Adversarial Network (AGAN), designed to bridge this "sim-to-real" gap through physics-informed domain adaptation. By discretizing the print volume into a non-Euclidean graph structure, we employ Anisotropic Graph Convolutional Networks (AGCN) to model directional heat flux dependent on raster orientation. We align the latent manifolds of low-fidelity simulation data and sparse real-world sensor data using an adversarial strategy, constrained by conservation laws. Furthermore, we address temporal asynchrony via Dynamic Time Warping (DTW) with adaptive Sakoe-Chiba bands to enforce spatio-temporal elasticity. Our results demonstrate a 42% reduction in root mean square error (RMSE) compared to standard transfer learning methods, enabling high-fidelity thermal history prediction for real-time process control.
+</p>
+            <a href="high-fidelity-predictive-model-using-adversarial-t.html" class="btn">Read Whitepaper</a>
+        </div>
+        
+        <div class="card">
+            <h2>Hybrid PINN for Co-Optimization of Materials</h2>
+            <p>
+The inverse design of heterogeneous materials exhibiting coupled active and passive responses presents a high-dimensional optimization challenge that defies conventional finite element analysis and purely data-driven machine learning. This paper introduces a novel Hybrid Physics-Informed Neural Network (H-PINN) architecture designed for the co-optimization of complex constitutive behaviors. By leveraging irreducible representations of the $SO(3)$ rotation group, the proposed framework decomposes physical tensors into isotropic, antisymmetric, and deviatoric components mapped to a spherical harmonic basis. Furthermore, we introduce a thermodynamic consistency constraint via Jacobian regularization, ensuring that the learned constitutive relations satisfy the second law of thermodynamics. We demonstrate that this symmetry-preserving, attention-based architecture significantly accelerates the discovery of optimal microstructures while guaranteeing frame indifference and energy conservation, outperforming standard deep learning approaches in generalization capability and physical validity.</p>
+            <a href="hybrid-pinn-for-co-optimization-of-materials.html" class="btn">Read Whitepaper</a>
+        </div>
+        
+        <div class="card">
+            <h2>Logit-Level Action Filter for Industrial Control</h2>
+            <p>
+
+Deep Reinforcement Learning (DRL) offers significant potential for high-dimensional industrial control tasks, yet its deployment in mission-critical environments is hindered by the stochastic nature of neural network outputs and the lack of guarantees regarding safety constraints. Traditional methods relying on reward shaping or negative reinforcement to discourage unsafe actions often fail to prevent catastrophic states during the exploration phase. This paper proposes a Logit-Level Action Filter (LLAF), a hardware-agnostic neuro-symbolic architecture that enforces hard constraints within Constrained Markov Decision Processes (CMDPs). By intercepting unnormalized logits prior to the softmax activation and applying a state-dependent boolean mask derived from symbolic logic, the LLAF ensures that the probability mass of invalid actions is mathematically reduced to zero. Simulated results on a high-fidelity 6-DOF robotic manipulator task demonstrate that the LLAF architecture achieves zero constraint violations while accelerating policy convergence by 28% compared to penalty-based baseline methods.
+</p>
+            <a href="logit-level-action-filter-for-industrial-control.html" class="btn">Read Whitepaper</a>
+        </div>
+        
+        <div class="card">
+            <h2>Modal Energy-Based Objective Function</h2>
+            <p>
+
+Model Predictive Control (MPC) has established itself as the dominant paradigm for constrained multivariable control. However, standard quadratic objective functions, formulated in the physical state space, often lack the granularity required to suppress specific, undesirable dynamic modes—such as structural resonances or unstable oscillatory eigenvalues—without imposing excessive conservatism on the entire system. This paper introduces a novel Modal Energy-Based Objective Function (MEBOF). By leveraging the spectral decomposition of Linear Time-Invariant (LTI) systems, we project the prediction horizon into a decoupled modal subspace. The objective function is subsequently reformulated to explicitly penalize the Lyapunov energy associated with specific eigenmodes. Theoretical analysis confirms that this modification preserves convexity and stability while providing targeted attenuation of selected dynamic behaviors. Simulation results on a flexible 4-degree-of-freedom structure demonstrate that the proposed method achieves a 14 dB reduction in resonant mode energy compared to conventional weight tuning, with negligible impact on control effort or computational latency.
+</p>
+            <a href="modal-energy-based-objective-function.html" class="btn">Read Whitepaper</a>
+        </div>
+        
+        <div class="card">
+            <h2>Multi-Scale Physics-Informed Predictive Control</h2>
+            <p>
+
+The control of high-dimensional physical systems governed by partial differential equations (PDEs) remains a formidable challenge in computational engineering, largely due to the disparity between macro-scale objectives and micro-scale dynamics. This paper introduces Multi-Scale Physics-Informed Predictive Control (MS-PIPC), a novel hierarchical framework that bridges this spatiotemporal gap. By integrating a Physics-Informed Disentangled Variational Autoencoder ($\Phi$-DVAE) for reduced-order trajectory planning with a lower-level Differentiable PDE solver for real-time actuation, we establish a fully differentiable control pipeline. We demonstrate that Jacobian regularization within the latent space ensures that control trajectories adhere to the physical manifold, while the differentiable solver permits gradient-based optimization of wave-based actuators. Simulation results on high-Reynolds-number fluid flow control indicate that MS-PIPC achieves a 40% reduction in drag compared to standard model predictive control, while maintaining computational feasibility for real-time applications.
+</p>
+            <a href="multi-scale-physics-informed-predictive-control.html" class="btn">Read Whitepaper</a>
+        </div>
+        
+        <div class="card">
+            <h2>Natural-Language-to-Bytecode Compiler</h2>
+            <p>
+
+The gap between negotiated business intent—expressed in natural language—and decentralized execution—encoded in low-level virtual machine bytecode—represents a critical vulnerability in the adoption of distributed ledger technology. Current reliance on manual translation by developers introduces semantic drift and logic errors. This paper presents a novel compilation architecture capable of transforming natural language business logic into verified instruction set architecture (ISA) primitives. By leveraging semantic parsing to generate a formal Intermediate Representation (IR), subjecting said IR to rigorous model checking, and utilizing isomorphic mapping for ISA synthesis, we demonstrate a system that guarantees logic preservation. Simulation results indicate that this Natural-Language-to-Bytecode (NL2B) compiler achieves a semantic fidelity rate of 99.4% against a corpus of standard ISDA (International Swaps and Derivatives Association) clauses, while eliminating common vulnerabilities such as re-entrancy and integer overflow during the synthesis phase.
+</p>
+            <a href="natural-language-to-bytecode-compiler.html" class="btn">Read Whitepaper</a>
+        </div>
+        
+        <div class="card">
+            <h2>Physics-Informed Neural Network (PINN) for Volumetric Reconstruction</h2>
+            <p>
+
+Volumetric reconstruction of dynamic fluid processes within opaque industrial vessels presents a significant inverse problem, typically characterized by ill-posedness and sparse sensor coverage. Traditional tomographic reconstruction algorithms, such as filtered back-projection or algebraic reconstruction techniques, frequently yield artifacts when data is limited, failing to adhere to fundamental conservation laws. This paper introduces a novel reconstruction framework utilizing Physics-Informed Neural Networks (PINNs) to fuse cosmic-ray muon tomography (muography) and acoustic tomography data. By embedding the Navier-Stokes equations and thermodynamic state laws directly into the loss function of a deep neural network, the proposed architecture acts as a mesh-free solver that satisfies both observational data and physical plausibility. Simulated experiments on a multiphase flow phantom demonstrate that the PINN framework significantly outperforms conventional interpolation methods, reducing the root-mean-square error (RMSE) of void fraction estimation by 42% while guaranteeing kinematic consistency in the reconstructed flow field.
+</p>
+            <a href="physics-informed-neural-network--pinn--for-volumet.html" class="btn">Read Whitepaper</a>
+        </div>
+        
+        <div class="card">
+            <h2>Physics-Informed Predictive Control System</h2>
+            <p>
+
+Active control of high-dimensional physical systems, such as fluid turbulence or structural vibration, remains a fundamental challenge in engineering due to the inherent trade-off between model fidelity and computational latency. Traditional model-based control often fails under non-linear regimes, while black-box Deep Reinforcement Learning (DRL) lacks safety guarantees and physical interpretability. This paper introduces a novel control architecture: Physics-Informed Subspace Predictive Control (PISPC). By synthesizing Variational Autoencoders (VAEs) with Differentiable Physics layers, we construct a system that learns a disentangled, orthogonal modal representation of the physical state. The system utilizes gradient-based sensitivity analysis through a differentiable wave equation solver to optimize control inputs for wave-based actuators in real-time. We demonstrate that projecting control efforts onto specific orthogonal subspaces ensures stability and maximizes energy attenuation. Simulation results on a clamped plate vibration problem indicate a 42% improvement in settling time compared to PID benchmarks and a 15% reduction in actuator energy consumption compared to standard Proximal Policy Optimization (PPO) agents.
+</p>
+            <a href="physics-informed-predictive-control-system.html" class="btn">Read Whitepaper</a>
+        </div>
+        
+        <div class="card">
+            <h2>Piezo-Neuromorphic Autonomous Vibration Damper</h2>
+            <p>
+
+Hydraulic pipelines in remote industrial infrastructure are susceptible to catastrophic fatigue failure caused by pressure transients and flow-induced vibrations (FIV). Conventional active vibration control (AVC) systems require external power sources often unavailable in remote manifolds, while passive dampers lack adaptability to stochastic variable-frequency disturbances. This paper proposes the Piezo-Neuromorphic Autonomous Vibration Damper (PNAVD), a self-powered, "bolt-on" regenerative control unit. By coupling a piezoelectric energy harvester with a low-power memristive Application-Specific Integrated Circuit (ASIC), the system converts fluid pressure transients into electrical energy to power a neuromorphic governor. We present the theoretical formulation of the regenerative feedback loop and demonstrate, through multi-physics simulation, that the PNAVD achieves a -18 dB attenuation of resonant peaks while maintaining a positive energy budget. This establishes the viability of zero-power-draw autonomous infrastructure protection.
+</p>
+            <a href="piezo-neuromorphic-autonomous-vibration-damper.html" class="btn">Read Whitepaper</a>
+        </div>
+        
+        <div class="card">
+            <h2>Predictive Control for Semiconductor Thermal Processing</h2>
+            <p>
+
+    The continued scaling of complementary metal-oxide-semiconductor (CMOS) technology to sub-3nm nodes necessitates unprecedented precision in Rapid Thermal Processing (RTP). Conventional proportional-integral-derivative (PID) and linear Model Predictive Control (MPC) frameworks increasingly fail to account for the stochastic non-linearities inherent in high-temperature silicon electrodynamics. This paper presents a novel control architecture utilizing Predictive Control based on Physics-Informed Latent Space Regularization (PILSR). By coupling the Drude model of free-carrier absorption with a reduced-order electromagnetic solver, we map the high-dimensional thermal state of a silicon wafer onto a low-dimensional manifold. This allows for real-time inference of optimal electromagnetic wave parameters. Simulation results demonstrate that this approach reduces thermal non-uniformity by 42% compared to standard MPC during 1200K dwell times, effectively mitigating yield loss caused by thermally induced stress voids.
+</p>
+            <a href="predictive-control-for-semiconductor-thermal-proce.html" class="btn">Read Whitepaper</a>
+        </div>
+        
+        <div class="card">
+            <h2>Predictive Maintenance AI for Multi-Modal Sensor Fusion</h2>
+            <p>
+
+The early detection of incipient material failure in critical industrial infrastructure remains a significant challenge due to the stochastic nature of fracture initiation and the high signal-to-noise ratio inherent in industrial environments. Traditional uni-modal monitoring systems—relying solely on either passive Acoustic Emission (AE) or active ultrasonic interrogation—often fail to distinguish between benign operational transients and critical structural degradation. This paper proposes a novel framework: the **Active-Passive Joint Monitoring (APJM)** architecture. By synergizing event-based transient elastodynamics with state-based localized density mapping, we introduce a deep learning model capable of cross-referencing temporal acoustic spikes with spatially correlated density anomalies. Our results demonstrate that this multi-modal sensor fusion approach significantly suppresses false positives associated with environmental noise while enhancing the sensitivity to micro-crack propagation in heterogeneous media.</p>
+            <a href="predictive-maintenance-ai-for-multi-modal-sensor-f.html" class="btn">Read Whitepaper</a>
+        </div>
+        
+        <div class="card">
+            <h2>Predictive Spatio-Temporal Control System for Active Metamaterials</h2>
+            <p>
+
+Active metamaterials offer unprecedented control over wave propagation through the modulation of constitutive parameters in space and time. By breaking time-reversal symmetry, such systems enable non-reciprocal phenomena, including unidirectional transport and topological insulation. However, the real-time control of large-scale actuator arrays required to sustain stable non-reciprocity remains a significant computational challenge, particularly under stochastic environmental disturbances. This paper presents a novel control architecture integrating Geometric Deep Learning with Robust Model Predictive Control (MPC). We propose a Physics-Constrained Graph Neural Network (PC-GNN) that utilizes Discrete Exterior Calculus (DEC) to embed conservation laws directly into the learning topology. This model predicts state evolution on a discretized lattice, driving an aleatoric uncertainty-aware MPC to modulate local stiffness dynamically. Simulated results demonstrate a 40 dB non-reciprocal isolation ratio and robust stability against Gaussian noise, outperforming classical feedback mechanisms by 28% in convergence speed.
+</p>
+            <a href="predictive-spatio-temporal-control-system-for-acti.html" class="btn">Read Whitepaper</a>
+        </div>
+        
+        <div class="card">
+            <h2>RAG-Driven Material Synthesis Matchmaker</h2>
+            <p>
+The transition to a circular economy is currently inhibited by an information asymmetry between the vast corpus of theoretical material science literature and the unstructured reality of industrial waste output. This paper introduces the Thermodynamic-RAG Synthesis Engine (TRSE), a novel framework utilizing Retrieval-Augmented Generation (RAG) to correlate industrial byproducts with potential precursor roles in advanced material synthesis. Unlike standard Large Language Model (LLM) applications, TRSE integrates a semantic vector space for chemical embeddings with a deterministic thermodynamic guardrail system. By mapping waste stream compositions to high-dimensional chemical embeddings and constraining generation via enthalpy minimization logic, the system identifies non-obvious, thermodynamically viable upcycling pathways. We demonstrate the system’s efficacy through a simulated case study involving red mud bauxite residue and lignin-rich black liquor, achieving a 94% thermodynamic validity rate in generated synthesis protocols.</p>
+            <a href="rag-driven-material-synthesis-matchmaker.html" class="btn">Read Whitepaper</a>
+        </div>
+        
+        <div class="card">
+            <h2>Real-Time Acoustic Waveform Optimization Algorithm</h2>
+            <p>
+
+The detection of nascent, anisotropic anomalies in critical infrastructure remains a fundamental challenge in quantitative non-destructive evaluation (QNDE). Traditional ultrasonic testing relies on static waveform parameters, which fail to maximize the scattering cross-section of direction-dependent defects such as micro-fractures. This paper presents a Real-Time Acoustic Waveform Optimization Algorithm (RAWOA) that dynamically reconfigures acoustic parameters (frequency, amplitude, phase) within the time-of-flight window of the acoustic signal. By leveraging the differential between electromagnetic computation speeds and acoustic propagation velocities, we implement a closed-loop Bayesian Active Learning framework on Field-Programmable Gate Arrays (FPGAs). Utilizing a Gaussian Process surrogate model with an anisotropic spectral kernel, the system performs Entropy Search to maximize information gain per transmission. Simulation results demonstrate a 43% improvement in Signal-to-Noise Ratio (SNR) and a log-linear convergence rate in defect characterization compared to static broadband excitation, validating the integration of information thermodynamics with computational acoustics.
+</p>
+            <a href="real-time-acoustic-waveform-optimization-algorithm.html" class="btn">Read Whitepaper</a>
+        </div>
+        
+        <div class="card">
+            <h2>Self-Calibrating Physics-Informed Adaptive Control</h2>
+            <p>
+
+Traditional Model Predictive Control (MPC) and recent Physics-Informed Neural Networks (PINNs) rely heavily on static prior knowledge of system dynamics. While PINNs offer regularization via governing equations, they remain susceptible to the "reality gap"—the divergence between theoretical models and physical degradation, unmodeled dynamics, or stochastic environmental shifts. This paper introduces Self-Calibrating Physics-Informed Adaptive Control (SC-PIAC), a closed-loop architecture that integrates Topological Data Analysis (TDA) and Structural Causal Models (SCMs) within a meta-adaptive control framework. Unlike standard adaptive control, SC-PIAC utilizes persistent homology to detect structural phase-space deviations and causal inference to isolate endogenous degradation from exogenous disturbances. We demonstrate that this tripartite approach allows the controller to autonomously recalibrate its internal physics parameters and neural weights in real-time. Simulation results on a non-linear dynamical system undergoing accelerated mechanical wear demonstrate a 43% reduction in tracking error compared to static PINN-MPC baselines and asymptotic stability in high-noise environments.
+</p>
+            <a href="self-calibrating-physics-informed-adaptive-control.html" class="btn">Read Whitepaper</a>
+        </div>
+        
+        <div class="card">
+            <h2>Self-Calibrating PIML Model for Bio-Hybrid Systems</h2>
+            <p>
+
+Bio-hybrid systems, which integrate biological tissues with synthetic substrates, offer superior energy efficiency and adaptability compared to traditional robotic systems. However, their deployment is severely limited by the stochastic degradation of biological components and the inherent stiffness of biokinetic governing equations. This paper presents a novel Self-Calibrating Physics-Informed Machine Learning (PIML) framework designed to stabilize and control bio-hybrid actuators in real-time. By integrating Jacobian eigendecomposition directly into the neural network training loop, we introduce a spectral regularization term that penalizes numerically unstable modes associated with stiff kinetics. Furthermore, we propose a Metabolic State-Dependent Adaptive Model Predictive Control (MPC) scheme that modulates temporal coherence weights based on real-time metabolic feedback. Simulation results demonstrate that this architecture reduces tracking error by 42% over a 72-hour degradation cycle compared to standard PINN baselines, effectively compensating for tissue fatigue and maintaining homeostasis through multiscale biological control.
+
+
+1.</p>
+            <a href="self-calibrating-piml-model-for-bio-hybrid-systems.html" class="btn">Read Whitepaper</a>
+        </div>
+        
+        <div class="card">
+            <h2>Self-Powered TMD Bio-Sensors</h2>
+            <p>
+
+The miniaturization of implantable diagnostic devices is currently bottlenecked by the power density and volumetric constraints of electrochemical storage units. This paper presents a theoretical framework and engineering validation for a self-powered bio-sensor based on two-dimensional Transition Metal Dichalcogenide (TMD) nano-slits. Leveraging the principle of electrokinetic energy conversion, specifically streaming potential generated by the pressure-driven flow of ionic biological fluids (e.g., blood, interstitial fluid), we demonstrate that molybdenum disulfide (MoS2) nano-channels can function simultaneously as energy harvesters and high-sensitivity analyte detectors. By exploiting the giant hydraulic slip length of TMD surfaces and the overlap of the Electric Double Layer (EDL) under nano-confinement, the proposed architecture achieves a theoretical power density sufficient to drive on-chip signal processing. Furthermore, we establish that surface charge regulation, modulated by specific biomarker binding, alters the streaming potential, thereby rendering the harvested voltage itself as the diagnostic signal.
+</p>
+            <a href="self-powered-tmd-bio-sensors.html" class="btn">Read Whitepaper</a>
+        </div>
+        
+        <div class="card">
+            <h2>Specialized Neural Network for Physics Prediction</h2>
+            <p>
+
+The precise estimation of time-varying physical coefficients in continuous media—such as thermal conductivity, viscosity, or permeability—remains a fundamental challenge in sensing and control systems, particularly under conditions of sparse sensor availability. This paper presents a novel neural architecture, the Jacobian-Regularized Physics-Informed Transformer (JR-PIT), designed to approximate the inverse solution of nonlinear Partial Differential Equations (PDEs) from sparse time-series data. By integrating Physics-Informed Neural Networks (PINNs) with Jacobian-based sensitivity analysis, we introduce a regularization term that constrains the Lipschitz constant of the network, ensuring output stability consistent with control theory principles. Furthermore, we employ a Trust Region-based adaptive gradient optimization method to navigate the complex loss landscape inherent to physics-constrained optimization. Simulated results on a non-stationary 2D diffusion-reaction system demonstrate that the JR-PIT achieves a 98.4% prediction accuracy with O(1) inference latency, outperforming standard recurrent architectures and unregularized PINNs.
+</p>
+            <a href="specialized-neural-network-for-physics-prediction.html" class="btn">Read Whitepaper</a>
+        </div>
+        
+        <div class="card">
+            <h2>Stochastic Noise Isolation Filter for Cryogenics</h2>
+            <p>
+
+The fidelity of quantum sensing and information processing architectures operating in the millikelvin regime is fundamentally limited by residual thermal excitations and two-level system (TLS) noise. While dilution refrigeration provides static cooling, dynamic isolation of quantized signals from the acoustic phonon background in superfluid environments remains an open challenge. This paper proposes the Stochastic Noise Isolation Filter for Cryogenics (SNIF-C), a hardware-embedded signal processing architecture. By leveraging Adiabatic Quantum Flux Parametron (AQFP) logic to implement recursive Bayesian estimation, the system actively discriminates between coherent quantum signal events and thermal phonon scattering within a superfluid 4He bath. We derive the theoretical bounds of phonon-flux coupling and demonstrate through Monte Carlo simulations that the SNIF-C architecture achieves a Signal-to-Noise Ratio (SNR) improvement of 14 dB at 20 mK, effectively suppressing roton-phonon contributions without inducing back-action decoherence.
+</p>
+            <a href="stochastic-noise-isolation-filter-for-cryogenics.html" class="btn">Read Whitepaper</a>
+        </div>
+        
+        <div class="card">
+            <h2>Synchronized Pulse-Width Modulation (SPWM) Electrostatic Damping</h2>
+            <p>
+Hydraulic transients, commonly referred to as "water hammer," present a significant structural threat in fluid transport systems, characterized by rapid pressure surges following sudden valve closures. Traditional mitigation strategies rely on passive air chambers or relief valves, which suffer from bulkiness and maintenance latency. This paper proposes a novel, self-powered active damping system utilizing Synchronized Pulse-Width Modulation (SPWM) Electrostatic Damping. The architecture integrates a rotary Triboelectric Nanogenerator (TENG) to harvest kinetic energy from the fluid flow, utilizing the resultant high-frequency voltage spikes as a clock signal for a memristive control array. Through the hysteresis inherent in memristive elements, the system generates precise, out-of-phase electrostatic force pulses applied to the valve actuator. Theoretical analysis and multiphysics simulations demonstrate that this closed-loop feedback mechanism effectively linearizes the deceleration of the fluid column, reducing peak surge pressures by approximately 64% compared to uncontrolled closures while operating autonomously without external power.</p>
+            <a href="synchronized-pulse-width-modulation--spwm--electro.html" class="btn">Read Whitepaper</a>
+        </div>
+        
+        <div class="card">
+            <h2>Triboelectric Pipe-Mount Energy Harvester</h2>
+            <p>
+
+The proliferation of the Industrial Internet of Things (IIoT) requires autonomous, maintenance-free power solutions for distributed sensor networks. This paper presents the design, theoretical modeling, and simulated performance of a novel Triboelectric Pipe-Mount Energy Harvester (PM-TENG). Designed to clamp onto high-pressure drive pipes, this device harvests ambient micro-vibrations to power wireless monitoring nodes. Unlike traditional linear resonators limited by narrow bandwidths, the PM-TENG utilizes magnetic repulsive springs to induce Duffing-type non-linear oscillations, enabling broadband energy capture. Furthermore, the device exploits Paschen’s Law by operating within a pressurized dielectric gas environment, thereby elevating the breakdown voltage threshold and maximizing surface charge density. Numerical simulations demonstrate a peak power density of 4.2 mW/cm² under 1g acceleration at 5 atm pressure, representing a 340% efficiency increase over atmospheric linear counterparts.
+</p>
+            <a href="triboelectric-pipe-mount-energy-harvester.html" class="btn">Read Whitepaper</a>
+        </div>
+        
+        <div class="card">
+            <h2>Unified Gradient Architecture for Control and Learning</h2>
+            <p>
+
+The separation of system identification and optimal control into distinct computational phases creates latency and sub-optimality in high-frequency, time-varying dynamical environments. This paper proposes a Unified Gradient Architecture (UGA), a novel framework that utilizes a single adjoint sensitivity stream to simultaneously adapt real-time control signals and update predictive model parameters. By formulating the Model Predictive Control (MPC) problem as a joint optimization over the control manifold and the parameter space of a neural surrogate, we derive a unified update law based on Backpropagation Through Time (BPTT). We provide a rigorous theoretical analysis utilizing Lyapunov stability theory to demonstrate that this joint gradient descent ensures asymptotic convergence of tracking error while maintaining bounded parameter estimates. Simulation results on a perturbed nonlinear quadrotor system demonstrate that UGA achieves a 40% reduction in tracking error compared to static MPC and a 15% reduction in computational overhead compared to separate adaptive control loops, validating the efficacy of the simultaneous dual-update mechanism.
+</p>
+            <a href="unified-gradient-architecture-for-control-and-lear.html" class="btn">Read Whitepaper</a>
+        </div>
+        
+    </div>
+
+    <footer>
+        &copy; 2026 Polaritronics, Inc. All rights reserved.
+    </footer>
+</body>
+</html>
