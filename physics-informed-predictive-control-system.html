@@ -3,64 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Physics-Informed Predictive Control System - Whitepaper</title>
+    <title>Physics Informed Predictive Control System - Whitepaper</title>
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <style>
-        body { font-family: 'Georgia', serif; line-height: 1.6; color: #333; max-width: 850px; margin: 0 auto; padding: 40px; background-color: #fcfcfc; }
-        header { border-bottom: 3px solid #1a2a6c; margin-bottom: 30px; padding-bottom: 20px; text-align: center; }
-        h1 { color: #1a2a6c; font-size: 2.2em; margin-bottom: 10px; line-height: 1.2; }
-        .author-box { margin-top: 10px; }
-        .author-name { font-weight: bold; font-size: 1.3em; color: #444; }
-        .affiliation { color: #777; font-style: italic; font-size: 1.1em; }
-        .abstract-container { background: #fff; padding: 25px; border: 1px solid #ddd; border-left: 6px solid #1a2a6c; margin: 30px 0; box-shadow: 2px 2px 5px rgba(0,0,0,0.05); }
-        .abstract-title { font-weight: bold; text-transform: uppercase; font-size: 0.9em; letter-spacing: 1px; color: #1a2a6c; display: block; margin-bottom: 10px; }
-        .abstract-text { font-style: italic; text-align: justify; }
-        .content { text-align: justify; }
-        h2 { color: #1a2a6c; border-bottom: 1px solid #eee; padding-bottom: 5px; margin-top: 40px; }
-        h3 { color: #2a3a7c; margin-top: 30px; }
-        p { margin-bottom: 1.5em; }
-        footer { margin-top: 60px; border-top: 1px solid #eee; padding-top: 20px; font-size: 0.85em; color: #999; text-align: center; }
-        .back-link { display: inline-block; margin-bottom: 20px; color: #1a2a6c; text-decoration: none; font-weight: bold; }
-        .back-link:hover { text-decoration: underline; }
-    </style>
+body { font-family: 'Georgia', serif; line-height: 1.6; color: #333; max-width: 850px; margin: 0 auto; padding: 40px; background-color: #fcfcfc; }
+header { border-bottom: 3px solid #1a2a6c; margin-bottom: 30px; padding-bottom: 20px; text-align: center; }
+h1 { color: #1a2a6c; font-size: 2.2em; margin-bottom: 10px; line-height: 1.2; }
+.author-box { margin-top: 10px; }
+.author-name { font-weight: bold; font-size: 1.3em; color: #444; }
+.affiliation { color: #777; font-style: italic; font-size: 1.1em; }
+.abstract-container { background: #fff; padding: 25px; border: 1px solid #ddd; border-left: 6px solid #1a2a6c; margin: 30px 0; box-shadow: 2px 2px 5px rgba(0,0,0,0.05); }
+.abstract-title { font-weight: bold; text-transform: uppercase; font-size: 0.9em; letter-spacing: 1px; color: #1a2a6c; display: block; margin-bottom: 10px; }
+.abstract-text { font-style: italic; text-align: justify; }
+.content { text-align: justify; }
+h2 { color: #1a2a6c; border-bottom: 1px solid #eee; padding-bottom: 5px; margin-top: 40px; }
+h3 { color: #2a3a7c; margin-top: 30px; }
+p { margin-bottom: 1.5em; }
+footer { margin-top: 60px; border-top: 1px solid #eee; padding-top: 20px; font-size: 0.85em; color: #999; text-align: center; }
+.back-link { display: inline-block; margin-bottom: 20px; color: #1a2a6c; text-decoration: none; font-weight: bold; }
+.back-link:hover { text-decoration: underline; }
+.support { margin-top: 40px; padding: 20px; background: #f4f7ff; border: 1px solid #d9e2ff; border-radius: 8px; text-align: left; }
+.support a { color: #1a2a6c; font-weight: bold; }
+</style>
 </head>
 <body>
     <a href="index.html" class="back-link">&larr; Back to Index</a>
     <header>
-        <h1>Physics-Informed Predictive Control System</h1>
+        <h1>Physics Informed Predictive Control System</h1>
         <div class="author-box">
             <div class="author-name">Michael Rapoport</div>
             <div class="affiliation">Polaritronics, Inc.</div>
         </div>
     </header>
-    
     <div class="abstract-container">
         <span class="abstract-title">Abstract</span>
-        <div class="abstract-text"></strong></p>
+        <div class="abstract-text">Active control of high-dimensional physical systems, such as fluid turbulence or structural vibration, remains a fundamental challenge in engineering due to the inherent trade-off between model fidelity and computational latency. Traditional model-based control often fails under non-linear regimes, while black-box Deep Reinforcement Learning (DRL) lacks safety guarantees and physical interpretability. This paper introduces a novel control architecture: Physics-Informed Subspace Predictive Control (PISPC). By synthesizing Variational Autoencoders (VAEs) with Differentiable Physics layers, we construct a system that learns a disentangled, orthogonal modal representation of the physical state. The system utilizes gradient-based sensitivity analysis through a differentiable wave equation solver to optimize control inputs for wave-based actuators in real-time. We demonstrate that projecting control efforts onto specific orthogonal subspaces ensures stability and maximizes energy attenuation. Simulation results on a clamped plate vibration problem indicate a 42% improvement in settling time compared to PID benchmarks and a 15% reduction in actuator energy consumption compared to standard Proximal Policy Optimization (PPO) agents.</div>
+    </div>
+    <div class="content">
+<h1>Physics-Informed Predictive Control System</h1>
+        <div class="author">Generated by After Midnight 1.0 • Autonomous Hyperswarm</div>
+        <div class="abstract"><strong>Abstract:</strong> </strong></p>
 <p>
 Active control of high-dimensional physical systems, such as fluid turbulence or structural vibration, remains a fundamental challenge in engineering due to the inherent trade-off between model fidelity and computational latency. Traditional model-based control often fails under non-linear regimes, while black-box Deep Reinforcement Learning (DRL) lacks safety guarantees and physical interpretability. This paper introduces a novel control architecture: Physics-Informed Subspace Predictive Control (PISPC). By synthesizing Variational Autoencoders (VAEs) with Differentiable Physics layers, we construct a system that learns a disentangled, orthogonal modal representation of the physical state. The system utilizes gradient-based sensitivity analysis through a differentiable wave equation solver to optimize control inputs for wave-based actuators in real-time. We demonstrate that projecting control efforts onto specific orthogonal subspaces ensures stability and maximizes energy attenuation. Simulation results on a clamped plate vibration problem indicate a 42% improvement in settling time compared to PID benchmarks and a 15% reduction in actuator energy consumption compared to standard Proximal Policy Optimization (PPO) agents.
-</p></div>
-    </div>
+</p>
 
-    <div class="content">
-        <!DOCTYPE html>
-    <html>
-    <head>
-    <title>Physics-Informed Predictive Control System - Scientific Paper</title>
-    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <style>
-        body { font-family: 'Times New Roman', serif; max-width: 800px; margin: 40px auto; line-height: 1.6; padding: 20px; }
-        h1 { text-align: center; font-size: 24px; margin-bottom: 10px; }
-        .author { text-align: center; font-style: italic; color: #555; margin-bottom: 40px; }
-        h2 { border-bottom: 1px solid #ccc; padding-bottom: 5px; margin-top: 30px; font-size: 18px; text-transform: uppercase; }
-        p { text-align: justify; margin-bottom: 15px; }
-        .abstract { font-style: italic; margin: 0 40px 30px 40px; font-size: 0.9em; }
-    </style>
-    </head>
-    <body>
-        
-        
-        
+</div>
         <h2>Physics-Informed Subspace Predictive Control via Differentiable Orthogonal Modal Decomposition</h2>
 
 <p><strong>Abstract</strong></p>
@@ -224,9 +211,14 @@ The superior performance of the Physics-Informed Predictive Control system stems
 This paper presented a rigorous framework for Physics-Informed Predictive Control using wave-based actuators. By integrating differentiable physics solvers with disentangled representation learning, we achieved a control system that is both highly effective and physically robust. The use of Projected Gradient Descent ensures that the optimization remains within the valid subspace of the physical actuators, solving the long-standing problem of mode spillover in active control. Future work will extend this architecture to fluid-structure interaction problems, investigating the control of non-linear flutter in aeroelastic systems.
 </p>
     </div>
-
+    <div class="support">
+        <strong>Support this research:</strong>
+        If this work is useful, consider supporting continued AI research and publication through
+        <a href="https://github.com/sponsors/michaelrapoport">GitHub Sponsors</a> or
+        <a href="https://www.buymeacoffee.com/michaelrapoport">Buy Me a Coffee</a>.
+    </div>
     <footer>
-        &copy; 2026 Michael Rapoport, Polaritronics, Inc.. All rights reserved. Professional Technical Document Series.
+        &copy; 2026 Michael Rapoport, Polaritronics, Inc. All rights reserved. Professional Technical Document Series.
     </footer>
 </body>
 </html>
