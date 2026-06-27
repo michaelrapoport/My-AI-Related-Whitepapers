@@ -39,8 +39,10 @@ class Paper:
     title: str
     slug: str
     category: str
+    subcategory: str
     source: Path
     abstract: str
+    summary: str
     body_html: str
 
 
@@ -149,23 +151,91 @@ def extract_abstract(text: str) -> str:
     return (paras[0] if paras else text[:800]).strip()
 
 
-def category_for(title: str, text: str) -> str:
+def classify_paper(title: str, text: str) -> tuple[str, str]:
+    title_hay = title.lower()
     hay = f"{title} {text[:4000]}".lower()
-    checks = [
-        ("Physics-Informed ML & Scientific AI", r"physics-informed|pinn|piml|differentiable physics|scientific machine|simulation|digital twin|surrogate"),
-        ("Control Systems & Signal Processing", r"control|beamforming|signal|sensor fusion|threshold|waveform|acoustic|phase|modulation|predictive maintenance"),
-        ("Bio, Medical & Neuro-AI", r"bio|neuro|brain|medical|drug|pharma|cell|protein|genomic|bioreactor|prosthetic|bci"),
-        ("Neural Networks & Learning Architectures", r"neural|transformer|deep learning|reinforcement|gan|adversarial|bayesian|classifier|training|learning architecture|neuromorphic|synaptic"),
-        ("Industrial, Materials & Energy AI", r"material|synthesis|manufacturing|battery|energy|thermal|electro|semiconductor|mining|catalytic"),
-        ("Computing, Hardware & Edge AI", r"hardware|edge|fpga|asic|memrist|crossbar|compiler|bytecode|chip|on-chip|neuromorphic"),
-        ("Autonomous Systems & Robotics", r"autonomous|robot|drone|uav|vehicle|navigation|fleet|swarm|mission"),
-        ("Security, Finance & Decision Intelligence", r"security|threat|finance|ledger|blockchain|risk|fraud|policy|audit"),
-        ("Generative AI, LLMs & Knowledge Systems", r"llm|large language|rag|retrieval|language model|natural language|compiler|agentic|prompt|knowledge|generative"),
+    priority_checks = [
+        ("Physics-Informed & Scientific ML", "Physics-Informed Neural Networks", r"physics-informed|physics informed|pinn|piml"),
+        ("Physics-Informed & Scientific ML", "Digital Twins & Surrogate Models", r"digital twin|surrogate model|predictive model"),
+        ("Physics-Informed & Scientific ML", "Differentiable Simulation & Sensitivity Gradients", r"differentiable|sensitivity gradient|gradient architecture|gradient trainer"),
+        ("Physics-Informed & Scientific ML", "Materials Discovery & Co-Optimization", r"material|synthesis|catalytic|battery|semiconductor|alloy|polymer"),
+        ("Neural, Neuromorphic & Cognitive Systems", "Neuromorphic Hardware & Memristive Learning", r"neuromorphic|memrist|synaptic|neural mesh|neural engine|neural parity"),
+        ("Neural, Neuromorphic & Cognitive Systems", "Brain-Computer Interfaces & Neural Decoding", r"brain|cortical|emg|neuro-haptic|neuromuscular|sub-vocal|neural knowledge|electrode"),
+        ("Neural, Neuromorphic & Cognitive Systems", "Human-AI Alignment & Cognitive Interfaces", r"somatic|intent|agi interface|human-ai|cognitive|latent synchronization"),
+        ("Neural, Neuromorphic & Cognitive Systems", "Model Optimization & Learning Architectures", r"model pruning|neural network|deep learning|classifier|training"),
+        ("Generative AI & Knowledge Systems", "LLMs, RAG & Knowledge Retrieval", r"rag|retrieval|knowledge|large language|llm"),
+        ("Generative AI & Knowledge Systems", "Semantic Protocols & Intent Translation", r"semantic|natural language|bytecode|transcoder|speech-to-intent"),
+        ("Generative AI & Knowledge Systems", "Compliance, Safety & Decision Libraries", r"compliance|prohibited state|policy|audit|safety"),
+        ("Generative AI & Knowledge Systems", "Latent Alignment & Agentic Systems", r"generative|latent alignment|agentic"),
+        ("Bio, Medical & Environmental AI", "Drug Discovery & Nanocarriers", r"drug|pharma|nanocarrier|inhibitor|regenerative medicine|therapeutic"),
+        ("Bio, Medical & Environmental AI", "Bio-Hybrid Systems & Bioremediation", r"bio-hybrid|bioremediation|bio scrubber|bioreactor|metabolic"),
+        ("Bio, Medical & Environmental AI", "Medical Interfaces & Therapeutics", r"medical|clinical|prosthetic|dental|topical kit"),
+        ("AI Hardware, Edge & Infrastructure", "Edge, FPGA & ASIC Acceleration", r"edge|fpga|asic|chip|on-chip|accelerator|precision hardware"),
+        ("AI Hardware, Edge & Infrastructure", "Memristive, Crossbar & In-Memory Compute", r"memrist|crossbar|in-memory|volatile non volatile"),
+        ("AI Hardware, Edge & Infrastructure", "Energy-Aware AI Infrastructure", r"energy|thermal|self powered|low-power|power"),
+        ("Autonomous & Robotic Systems", "Swarm, Fleet & Mission Autonomy", r"swarm|fleet|mission|multi-agent"),
+        ("Autonomous & Robotic Systems", "Autonomous Safety & Navigation", r"autonomous|robot|drone|uav|vehicle|navigation"),
+        ("Security, Finance & Decision Intelligence", "Security, Risk & Fraud Intelligence", r"secure|security|threat|fraud|risk|ledger|blockchain|federated"),
+        ("AI Control & Signal Systems", "Beamforming & Phased-Array Control", r"beamforming|phased array|phased arrays|array control|antenna"),
+        ("AI Control & Signal Systems", "Hydraulic, Fluidic & Turbulence Control", r"hydraulic|fluidic|nanofluidic|turbulence|flow control|valve|manifold"),
+        ("AI Control & Signal Systems", "Predictive Maintenance & Sensor Fusion", r"predictive maintenance|sensor fusion|condition monitoring"),
+        ("AI Control & Signal Systems", "Metamaterials & Active Matter Control", r"metamaterial|active matter"),
+        ("AI Control & Signal Systems", "Acoustic, Waveform & Resonance Control", r"acoustic|waveform|resonance|vibration|phase locked|phase-adaptive|interference"),
+        ("AI Control & Signal Systems", "Adaptive Control & Optimization", r"adaptive|feedback|controller|control|governor|calibration|modulation|tuner"),
     ]
-    for category, pattern in checks:
-        if re.search(pattern, hay):
-            return category
-    return "Advanced AI Systems"
+    for category, subcategory, pattern in priority_checks:
+        if re.search(pattern, title_hay):
+            return category, subcategory
+
+    checks = [
+        ("AI Control & Signal Systems", "Acoustic, Waveform & Resonance Control", r"acoustic|waveform|resonance|vibration|phase|modulation|cavitation|harmonic"),
+        ("AI Control & Signal Systems", "Beamforming & Phased-Array Control", r"beamforming|phased array|array control|antenna|directional|spatial filtering"),
+        ("AI Control & Signal Systems", "Bio-Signal & Neuro-Control Interfaces", r"brain|neuro|bci|prosthetic|biosignal|bio-signal|neural decoding|electrode"),
+        ("AI Control & Signal Systems", "Hydraulic, Fluidic & Turbulence Control", r"hydraulic|fluidic|fluid dynamics|turbulence|flow control|pump|valve"),
+        ("AI Control & Signal Systems", "Predictive Maintenance & Sensor Fusion", r"predictive maintenance|sensor fusion|fault|threshold|condition monitoring|diagnostic"),
+        ("AI Control & Signal Systems", "Metamaterials & Active Matter Control", r"metamaterial|active matter|reconfigurable material|smart material"),
+        ("AI Control & Signal Systems", "Adaptive Control & Optimization", r"control|adaptive|feedback|controller|optimization|optimal control"),
+        ("Physics-Informed & Scientific ML", "Physics-Informed Neural Networks", r"physics-informed|pinn|piml|physics informed"),
+        ("Physics-Informed & Scientific ML", "Digital Twins & Surrogate Models", r"digital twin|surrogate model|reduced-order|reduced order|emulator"),
+        ("Physics-Informed & Scientific ML", "Differentiable Simulation & Sensitivity Gradients", r"differentiable|gradient|sensitivity|adjoint|simulation"),
+        ("Physics-Informed & Scientific ML", "Materials Discovery & Co-Optimization", r"material|synthesis|catalytic|battery|semiconductor|alloy|polymer"),
+        ("Physics-Informed & Scientific ML", "Scientific Computing & Analog Simulation", r"scientific machine|scientific computing|analog|numerical|finite element|computational"),
+        ("Neural, Neuromorphic & Cognitive Systems", "Neuromorphic Hardware & Memristive Learning", r"neuromorphic|memrist|crossbar|synaptic|spiking"),
+        ("Neural, Neuromorphic & Cognitive Systems", "Brain-Computer Interfaces & Neural Decoding", r"brain-computer|bci|neural decoding|neuro|prosthetic"),
+        ("Neural, Neuromorphic & Cognitive Systems", "Human-AI Alignment & Cognitive Interfaces", r"human-ai|alignment|cognitive|intent|preference|interactive"),
+        ("Neural, Neuromorphic & Cognitive Systems", "Model Optimization & Learning Architectures", r"neural|transformer|deep learning|reinforcement|gan|adversarial|bayesian|classifier|training|pruning|learning architecture"),
+        ("Generative AI & Knowledge Systems", "LLMs, RAG & Knowledge Retrieval", r"llm|large language|rag|retrieval|language model|knowledge graph"),
+        ("Generative AI & Knowledge Systems", "Semantic Protocols & Intent Translation", r"semantic|natural language|intent|compiler|bytecode|translation"),
+        ("Generative AI & Knowledge Systems", "Compliance, Safety & Decision Libraries", r"compliance|policy|audit|risk|safety|decision library|governance"),
+        ("Generative AI & Knowledge Systems", "Latent Alignment & Agentic Systems", r"agentic|agent|prompt|generative|latent"),
+        ("Bio, Medical & Environmental AI", "Drug Discovery & Nanocarriers", r"drug|pharma|nanocarrier|protein|genomic|therapeutic"),
+        ("Bio, Medical & Environmental AI", "Bio-Hybrid Systems & Bioremediation", r"bio-hybrid|bioremediation|cell|bioreactor|microbial|environmental"),
+        ("Bio, Medical & Environmental AI", "Medical Interfaces & Therapeutics", r"medical|clinical|diagnosis|prosthetic|patient|therapy"),
+        ("AI Hardware, Edge & Infrastructure", "Edge, FPGA & ASIC Acceleration", r"edge|fpga|asic|chip|on-chip|accelerator"),
+        ("AI Hardware, Edge & Infrastructure", "Memristive, Crossbar & In-Memory Compute", r"memrist|crossbar|in-memory|neuromorphic"),
+        ("AI Hardware, Edge & Infrastructure", "Energy-Aware AI Infrastructure", r"energy|thermal|power|efficiency|low-power"),
+        ("Autonomous & Robotic Systems", "Swarm, Fleet & Mission Autonomy", r"swarm|fleet|mission|multi-agent|coordination"),
+        ("Autonomous & Robotic Systems", "Autonomous Safety & Navigation", r"autonomous|robot|drone|uav|vehicle|navigation|path planning"),
+        ("Security, Finance & Decision Intelligence", "Security, Risk & Fraud Intelligence", r"security|threat|fraud|risk|ledger|blockchain|finance"),
+    ]
+    for haystack in (title_hay, hay):
+        for category, subcategory, pattern in checks:
+            if re.search(pattern, haystack):
+                return category, subcategory
+    return "Advanced AI Systems", "Cross-Domain AI Research"
+
+
+def make_summary(title: str, abstract: str, category: str, subcategory: str) -> str:
+    cleaned = re.sub(r"\s+", " ", abstract).strip()
+    cleaned = re.sub(r"^(abstract|summary)\s*[:.-]\s*", "", cleaned, flags=re.I)
+    sentences = re.split(r"(?<=[.!?])\s+", cleaned)
+    for sentence in sentences:
+        sentence = sentence.strip()
+        if 45 <= len(sentence) <= 280 and len(sentence.split()) <= 42:
+            return sentence
+    title_phrase = title.rstrip(".")
+    focus = subcategory.lower()
+    return f"Examines {title_phrase} as {focus} research, emphasizing AI-enabled modeling, prediction, control, or system design."
 
 
 def candidate_paths():
@@ -203,12 +273,15 @@ def collect_papers(limit: int | None = None) -> list[Paper]:
             continue
         key = re.sub(r"[^a-z0-9]+", "", title.lower())
         abstract = extract_abstract(text)
+        category, subcategory = classify_paper(title, text)
         paper = Paper(
             title=title,
             slug=slugify(title),
-            category=category_for(title, text),
+            category=category,
+            subcategory=subcategory,
             source=path,
             abstract=abstract,
+            summary=make_summary(title, abstract, category, subcategory),
             body_html=extract_body(raw),
         )
         prev = selected.get(key)
@@ -216,7 +289,7 @@ def collect_papers(limit: int | None = None) -> list[Paper]:
             selected[key] = paper
         if limit and len(selected) >= limit:
             break
-    papers = sorted(selected.values(), key=lambda p: (p.category, p.title.lower()))
+    papers = sorted(selected.values(), key=lambda p: (p.category, p.subcategory, p.title.lower()))
     slugs = {}
     for paper in papers:
         base = paper.slug
@@ -238,12 +311,15 @@ def collect_existing_pages() -> list[Paper]:
         if len(title) < 8:
             continue
         abstract = extract_abstract(text)
+        category, subcategory = classify_paper(title, text)
         papers.append(Paper(
             title=title,
             slug=path.stem,
-            category=category_for(title, text),
+            category=category,
+            subcategory=subcategory,
             source=path,
             abstract=abstract,
+            summary=make_summary(title, abstract, category, subcategory),
             body_html="",
         ))
     return papers
@@ -256,7 +332,7 @@ def merge_with_existing(source_papers: list[Paper]) -> list[Paper]:
         title_key = re.sub(r"[^a-z0-9]+", "", paper.title.lower())
         if paper.slug not in merged and title_key not in normalized_titles:
             merged[paper.slug] = paper
-    return sorted(merged.values(), key=lambda p: (p.category, p.title.lower()))
+    return sorted(merged.values(), key=lambda p: (p.category, p.subcategory, p.title.lower()))
 
 
 STYLE = """
@@ -324,7 +400,7 @@ def render_paper(paper: Paper) -> str:
 def grouped(papers: list[Paper]):
     groups = {}
     for paper in papers:
-        groups.setdefault(paper.category, []).append(paper)
+        groups.setdefault(paper.category, {}).setdefault(paper.subcategory, []).append(paper)
     return dict(sorted(groups.items()))
 
 
@@ -353,10 +429,13 @@ def render_readme(papers: list[Paper]) -> str:
         "## 📚 Research & Publications",
         "",
     ]
-    for category, items in grouped(papers).items():
+    for category, subgroups in grouped(papers).items():
         lines.append(f"### {category}")
-        for paper in items:
-            lines.append(f"- [**{paper.title}**]({SITE_BASE}/{paper.slug}.html) - {paper.abstract[:220].rstrip()}...")
+        for subcategory, items in sorted(subgroups.items()):
+            lines.append(f"#### {subcategory}")
+            for paper in items:
+                lines.append(f"- [**{paper.title}**]({SITE_BASE}/{paper.slug}.html) - {paper.summary}")
+            lines.append("")
         lines.append("")
     lines += [
         "---",
@@ -368,20 +447,26 @@ def render_readme(papers: list[Paper]) -> str:
 
 def render_index(papers: list[Paper]) -> str:
     sections = []
-    for category, items in grouped(papers).items():
-        cards = []
-        for paper in items:
-            cards.append(f"""
+    for category, subgroups in grouped(papers).items():
+        subsections = []
+        for subcategory, items in sorted(subgroups.items()):
+            cards = []
+            for paper in items:
+                cards.append(f"""
         <article class="card">
             <h3>{html.escape(paper.title)}</h3>
-            <p>{html.escape(paper.abstract)}</p>
+            <div class="tag">{html.escape(subcategory)}</div>
+            <p>{html.escape(paper.summary)}</p>
             <a href="{paper.slug}.html" class="btn">Read Whitepaper</a>
         </article>""")
+            subsections.append(f"""
+        <h3 class="subcategory">{html.escape(subcategory)}</h3>
+        <div class="grid">{''.join(cards)}
+        </div>""")
         sections.append(f"""
     <section>
         <h2>{html.escape(category)}</h2>
-        <div class="grid">{''.join(cards)}
-        </div>
+{''.join(subsections)}
     </section>""")
     return f"""<!DOCTYPE html>
 <html lang="en">
@@ -398,10 +483,12 @@ def render_index(papers: list[Paper]) -> str:
         .support {{ background: white; padding: 24px; border-left: 6px solid #1a2a6c; border-radius: 8px; margin-bottom: 30px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }}
         .support a {{ color: #1a2a6c; font-weight: 700; }}
         .grid {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px; }}
+        .subcategory {{ color: #43538f; margin: 26px 0 14px; font-size: 1.05em; }}
         .card {{ background: white; padding: 25px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); transition: transform 0.2s, box-shadow 0.2s; border-top: 4px solid #1a2a6c; display: flex; flex-direction: column; }}
         .card:hover {{ transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.1); }}
         .card h3 {{ margin-top: 0; font-size: 1.1em; color: #1a2a6c; min-height: 3em; }}
-        .card p {{ font-size: 0.85em; color: #666; max-height: 130px; overflow: hidden; position: relative; margin-bottom: 20px; }}
+        .tag {{ align-self: flex-start; background: #eef2ff; color: #1a2a6c; border: 1px solid #d9e2ff; border-radius: 4px; padding: 3px 8px; font-size: 0.72em; font-weight: 700; margin-bottom: 12px; }}
+        .card p {{ font-size: 0.9em; color: #555; margin-bottom: 20px; }}
         .btn {{ margin-top: auto; display: inline-block; background: #1a2a6c; color: white; padding: 8px 16px; border-radius: 4px; text-decoration: none; font-weight: bold; font-size: 0.9em; text-align: center; }}
         .btn:hover {{ background: #2a3a7c; }}
         footer {{ margin-top: 60px; text-align: center; color: #888; font-size: 0.9em; }}
@@ -437,11 +524,14 @@ def main():
     source_papers = collect_papers(args.limit)
     papers = merge_with_existing(source_papers)
     print(f"Selected {len(source_papers)} source papers; publishing {len(papers)} total pages including existing repository papers.")
-    for category, items in grouped(papers).items():
-        print(f"{category}: {len(items)}")
+    for category, subgroups in grouped(papers).items():
+        total = sum(len(items) for items in subgroups.values())
+        print(f"{category}: {total}")
+        for subcategory, items in sorted(subgroups.items()):
+            print(f"  - {subcategory}: {len(items)}")
     if args.manifest:
         print(json.dumps([
-            {"title": p.title, "slug": p.slug, "category": p.category, "source": str(p.source)}
+            {"title": p.title, "slug": p.slug, "category": p.category, "subcategory": p.subcategory, "source": str(p.source)}
             for p in papers
         ], indent=2))
     if not args.write:
@@ -449,8 +539,8 @@ def main():
 
     for paper in source_papers:
         (REPO_ROOT / f"{paper.slug}.html").write_text(render_paper(paper), encoding="utf-8")
-    (REPO_ROOT / "README.md").write_text(render_readme(papers), encoding="utf-8")
-    (REPO_ROOT / "index.html").write_text(render_index(papers), encoding="utf-8")
+    (REPO_ROOT / "README.md").write_text(render_readme(papers), encoding="utf-8", newline="\n")
+    (REPO_ROOT / "index.html").write_text(render_index(papers), encoding="utf-8", newline="\n")
 
 
 if __name__ == "__main__":
